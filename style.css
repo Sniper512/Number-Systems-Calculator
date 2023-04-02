@@ -1,0 +1,23 @@
+.container {
+background-color: lightgreen;
+padding: 2rem;
+border-radius: 30 rem;
+}
+.frame{
+    padding-left: 24rem ;
+    padding-top: 1rem ;
+    padding-bottom: 1rem ;
+    justify-content: center;
+}
+.buttons{
+    padding-top:2rem;
+    padding-left: 4rem;
+}
+
+.button-one{
+    margin-right:10rem;
+    padding:1 rem;
+}
+.button-two{
+    padding:1 rem;
+}
