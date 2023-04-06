@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>NumGeeks</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="icon" href="computer.jpg" width="200px" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+
+    <section class="container">
+        <div>
+            <span class="Main-Heading">NumGeeks</span>
+            <span><img src="light-green.jpg" alt="No"></span>
+        </div>
+        <div class="sub-Heading">
+            <span>Calculator for all Number Systems</span>
+        </div>
+        <div class="light-sub-heading">
+            <span>Convert values from one Number system to another Smoothly.</span>
+        </div>
+    </section>
+    <section class="Main-Calculator">
+        <form>
+            <div class="Convert-from">
+                <i class="fa fa-bars" style="font-size:25px;color:black;"></i>
+                <select name="from-menu" id="options">
+                    <option value=None>Convert from...</option>
+                    <option value=10>Base-10</option>
+                    <option value=2>Base-2</option>
+                    <option value=8>Base-8</option>
+                    <option value=16>Base-16</option>
+                </select>
+            </div>
+            <div class="input-num">
+                <i class="fa fa-calculator fa-shake" style="font-size:25px;color:black;"></i>
+                <input type="number" class="number-one" name="mail" id="num_input" placeholder="Number to convert..">
+            </div>
+
+            <div class="Convert-too">
+                <i class="fa fa-bars" style="font-size:25px;color:black;"></i>
+                <select name="too-menu" id="options2">
+                    <option value=None>Convert to...</option>
+                    <option value=10>Base-10</option>
+                    <option value=2>Base-2</option>
+                    <option value=8>Base-8</option>
+                    <option value=16>Base-16</option>
+                </select>
+            </div>
+            <div class="Num-answer">
+                <i class="fa fa-calculator fa-shake" style="font-size:25px;color:black;"></i>
+                <div id="answer">...</div>
+            </div>
+
+        </form>
+        <div class="converter-div">
+            <span class="converter-sub-div"></span>
+            <button class="converter-sub-div" id="convert" onclick=computer()>Convert</button>
+        </div>
+        <div class="ConnectTagDiv">
+            <span class="spaceProvider DecreaseWidth">
+                <hr>
+            </span>
+            <span class="spaceProvider widthIncrese">or connect with</span>
+            <span class="spaceProvider DecreaseWidth">
+                <hr>
+            </span>
+        </div>
+        <div class="logos">
+            <span class="logo"><img src="facebook.png" alt="Sorry!"></span>
+            <span class="logo"><img src="google.png" alt="Sorry!"></span>
+            <span class="logo"><img src="linkdin.png" alt="Sorry!" width="50%"></span>
+            <span class="logo" id="noborder"><img src="git.png" alt="Sorry!"></span>
+        </div>
+    </section>
+    <div class="privacy">
+        By Signing up, You agree to our <a href="#">Terms of service</a> and <a href="#">Privacy Policy</a>
+        <div>
+</body>
+
+</html>
