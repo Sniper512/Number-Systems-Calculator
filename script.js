@@ -67,28 +67,33 @@ function decimalToBinary(num) {
 }
 function ElementsDistributer(num) {
   var arr = [];
-  while (num > 0) {
-    arr.push(num % 10);
-    num = Math.floor(num / 10);
+  var number=Number(num);
+  while (number > 0) {
+    arr.push(number%10);
+    number = Math.floor(number / 10);
   }
+  arr.reverse();
   return arr;
 }
 
-function binaryToDecimal(num) {
+function binaryToDecimal(number) {
+  var num=Number(number);
   if (Number.isInteger(num)) {
     var power = 0;
-    var result = 0;
-    num_arr = ElementsDistributer(num);
-    for (var i = 0; i < num_arr.length; i++) {
-      result = result + Math.pow(2, power) * num_arr[i];
+    var result =[];
+    result[0]=0;
+    var num_arr = ElementsDistributer(num);
+    for (var i = num_arr.length-1; i>=0; i--) {
+      result[0] += Math.pow(2, power) * num_arr[i];
       power++;
     }
     return result;
   }
 }
-function printResult(result_arr) {
+function printResult(result_arr,type) {
 
   var result = "";
+  if(type=="binary") {
   var size = result_arr.length;
   if (size < 4) {
     while (size < 4) {
@@ -96,6 +101,7 @@ function printResult(result_arr) {
       size++;
     }
   }
+}
 
   for (var i = 0; i < result_arr.length; i++) {
     result += result_arr[i];
@@ -115,12 +121,15 @@ function computer() {
   second_type = arr[1];
   number = arr[2];
   var result_arr = [];
+  var type="";
   if (first_type == 10 && second_type == 2) {
     result_arr = decimalToBinary(number);
+    type="binary";
   }
   else if (first_type ==2 && second_type == 10) {
-    result_arr==binaryToDecimal(number);
+    result_arr=binaryToDecimal(number);
+    type="decimal";
 }
-  printResult(result_arr);
+  printResult(result_arr,type);
 
 }

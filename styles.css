@@ -67,6 +67,7 @@ img{
     padding-top:1rem;
     padding-bottom: 1rem;
     padding-left: 1rem;
+    padding-right: 8rem;
 }
 .container img{
     width:3rem;
@@ -109,7 +110,7 @@ img{
     display: inline-flex;
     align-items: center;
     border-radius: 15px;
-    padding-right: 2rem;;
+    padding-right: 0.5rem;;
 }
 
 .number-one{
