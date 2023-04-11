@@ -29,7 +29,7 @@ function ZeroCheck(arr) {
   }
   return 1;
 }
-function binaryToDecimal(num) {
+function decimalToBinary(num) {
   var arr = new Array();
   if (Number.isInteger(num)) {
     while (num > 0) {
@@ -57,13 +57,34 @@ function binaryToDecimal(num) {
     }
     else {
       new_arr = new Array();
-      temp=new Array();
-      temp= new_arr.concat(real_arr);
+      temp = new Array();
+      temp = new_arr.concat(real_arr);
       temp.push('.');
       arr = temp.concat(point_arr);
     }
   }
   return arr;
+}
+function ElementsDistributer(num) {
+  var arr = [];
+  while (num > 0) {
+    arr.push(num % 10);
+    num = Math.floor(num / 10);
+  }
+  return arr;
+}
+
+function binaryToDecimal(num) {
+  if (Number.isInteger(num)) {
+    var power = 0;
+    var result = 0;
+    num_arr = ElementsDistributer(num);
+    for (var i = 0; i < num_arr.length; i++) {
+      result = result + Math.pow(2, power) * num_arr[i];
+      power++;
+    }
+    return result;
+  }
 }
 function printResult(result_arr) {
 
@@ -79,7 +100,9 @@ function printResult(result_arr) {
   for (var i = 0; i < result_arr.length; i++) {
     result += result_arr[i];
   }
-
+  if (result.length > 15) {
+    document.getElementById("answer").style.paddingRight = "0rem";
+  }
   document.getElementById("answer").innerHTML = result;
 
 }
@@ -93,8 +116,11 @@ function computer() {
   number = arr[2];
   var result_arr = [];
   if (first_type == 10 && second_type == 2) {
-    result_arr = binaryToDecimal(number);
-    printResult(result_arr);
+    result_arr = decimalToBinary(number);
   }
+  else if (first_type ==2 && second_type == 10) {
+    result_arr==binaryToDecimal(number);
+}
+  printResult(result_arr);
 
 }
