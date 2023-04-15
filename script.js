@@ -47,8 +47,10 @@ function decimalToBinary(num) {
     var integerPart = Math.floor(num);
     var point = num - integerPart;
     var real_arr = new Array();
-    real_arr = binaryToDecimal(integerPart);
+    var point_arr = new Array();
+    real_arr = decimalToBinary(integerPart);
     point_arr = pointPartForBinary(point);
+    
     if (ZeroCheck(real_arr)) {
       new_arr = new Array();
       new_arr[0] = '0';
