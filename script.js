@@ -71,6 +71,7 @@ function binaryToDecimal(binary) {
   let fractionalPart = binary.split('.')[1] || ''; 
   let fractionalDecimal = 0;
   let position = integerPart.length - 1;
+  var integerDecimal=0;
   for (let i = 0; i < integerPart.length; i++) {
     integerDecimal += integerPart[i] * Math.pow(2, position);
     position--;
@@ -92,6 +93,7 @@ function decimalToOctal(decimal) {
   let fractionalPart = decimal - integerPart;
   let integerOctal = "";
   let fractionalOctal = "";
+  
   while (integerPart > 0) {
     integerOctal = (integerPart % 8).toString() + integerOctal;
     integerPart = Math.floor(integerPart / 8);
@@ -112,6 +114,27 @@ function decimalToOctal(decimal) {
   return arr;
 }
 
+function octalToDecimal(octal) {
+  let integerPart = octal.split('.')[0];
+  let fractionalPart = octal.split('.')[1] || ''; 
+  let integerDecimal = 0;
+  let fractionalDecimal = 0;
+  let position = integerPart.length - 1;
+  for (let i = 0; i < integerPart.length; i++) {
+    integerDecimal += integerPart[i] * Math.pow(8, position);
+    position--;
+  }
+  if (fractionalPart.length > 0) { 
+    position = -1;
+    for (let i = 0; i < fractionalPart.length; i++) {
+      fractionalDecimal += fractionalPart[i] * Math.pow(8, position);
+      position--;
+    }
+  }
+  var arr=new Array();
+  arr.push(integerDecimal + fractionalDecimal);
+  return arr;
+}
 
 function printResult(result_arr, type) {
   var result = "";
@@ -153,6 +176,10 @@ function computer() {
   }
   else if (first_type == 10 && second_type == 8) {
     result_arr = decimalToOctal(number);
+    type = "octal";
+  }
+  else if (first_type == 8 && second_type == 10) {
+    result_arr = octalToDecimal(number.toString());
     type = "octal";
   }
   printResult(result_arr, type);
