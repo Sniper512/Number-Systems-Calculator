@@ -87,6 +87,31 @@ function binaryToDecimal(binary) {
   return arr;
 }
 
+function decimalToOctal(decimal) {
+  let integerPart = Math.floor(decimal);
+  let fractionalPart = decimal - integerPart;
+  let integerOctal = "";
+  let fractionalOctal = "";
+  while (integerPart > 0) {
+    integerOctal = (integerPart % 8).toString() + integerOctal;
+    integerPart = Math.floor(integerPart / 8);
+  }
+  if (fractionalPart > 0) {
+    fractionalOctal = ".";
+    let precision = 6;
+    while (precision > 0 && fractionalPart > 0) {
+      fractionalPart *= 8;
+      let digit = Math.floor(fractionalPart);
+      fractionalOctal += digit.toString();
+      fractionalPart -= digit;
+      precision--;
+    }
+  }
+  var arr=new Array();
+  arr.push(integerOctal + fractionalOctal);
+  return arr;
+}
+
 
 function printResult(result_arr, type) {
   var result = "";
@@ -125,6 +150,10 @@ function computer() {
   } else if (first_type == 2 && second_type == 10) {
     result_arr = binaryToDecimal(number.toString());
     type = "decimal";
+  }
+  else if (first_type == 10 && second_type == 8) {
+    result_arr = decimalToOctal(number);
+    type = "octal";
   }
   printResult(result_arr, type);
 }
