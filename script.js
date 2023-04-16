@@ -65,50 +65,29 @@ function decimalToBinary(num) {
   }
   return arr;
 }
-function ElementsDistributer(num) {
-  var arr = [];
-  var number = Number(num);
-  while (number > 0) {
-    arr.push(number % 10);
-    number = Math.floor(number / 10);
+
+function binaryToDecimal(binary) {
+  let integerPart = binary.split('.')[0];
+  let fractionalPart = binary.split('.')[1] || ''; 
+  let fractionalDecimal = 0;
+  let position = integerPart.length - 1;
+  for (let i = 0; i < integerPart.length; i++) {
+    integerDecimal += integerPart[i] * Math.pow(2, position);
+    position--;
   }
-  arr.reverse();
+  if (fractionalPart.length > 0) {
+    position = -1;
+    for (let i = 0; i < fractionalPart.length; i++) {
+      fractionalDecimal += fractionalPart[i] * Math.pow(2, position);
+      position--;
+    }
+  }
+  var arr=new Array();
+  arr.push(integerDecimal + fractionalDecimal)
   return arr;
 }
 
-function pointPartforDecimal(num) {
-  var power = -1;
-  var result = [];
-  result[0] = 0;
-  var num_arr = ElementsDistributer(num);
-  for (var i = 0; i < num_arr.length; i++) {
-    result[0] += Math.pow(2, power) * num_arr[i];
-    power--;
-  }
-  return result;
-}
-function binaryToDecimal(number) {
-  var num = Number(number);
-  if (Number.isInteger(num)) {
-    var power = 0;
-    var result = [];
-    result[0] = 0;
-    var num_arr = ElementsDistributer(num);
-    for (var i = num_arr.length - 1; i >= 0; i--) {
-      result[0] += Math.pow(2, power) * num_arr[i];
-      power++;
-    }
-    return result;
-  } else {
-    var integerPart = Math.floor(num);
-    var point = num - integerPart;
-    var real_arr = new Array();
-    var point_arr = new Array();
-    real_arr = binaryToDecimal(integerPart);
-    point_arr = pointPartforDecimal(point);
-    return point_arr;
-  }
-}
+
 function printResult(result_arr, type) {
   var result = "";
   if (type == "binary") {
@@ -127,10 +106,8 @@ function printResult(result_arr, type) {
   if (result.length > 20) {
     document.getElementById("answer").style.paddingRight = "0rem";
   }
-  else{
-    document.getElementById("answer").style.paddingRight = "12rem";
-  }
-  document.getElementById("answer").innerHTML = result;
+
+  document.getElementById("answer").innerHTML = result_arr[0];
 }
 function computer() {
   var first_type = 0;
@@ -146,7 +123,7 @@ function computer() {
     result_arr = decimalToBinary(number);
     type = "binary";
   } else if (first_type == 2 && second_type == 10) {
-    result_arr = binaryToDecimal(number);
+    result_arr = binaryToDecimal(number.toString());
     type = "decimal";
   }
   printResult(result_arr, type);
