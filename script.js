@@ -135,6 +135,71 @@ function octalToDecimal(octal) {
   arr.push(integerDecimal + fractionalDecimal);
   return arr;
 }
+function hexToDecimal(hex) {
+  let integerPart = hex.split('.')[0];
+  let fractionalPart = hex.split('.')[1] || ''; 
+  let integerDecimal = 0;
+  let fractionalDecimal = 0;
+  let position = integerPart.length - 1;
+  for (let i = 0; i < integerPart.length; i++) {
+    let digitValue = parseInt(integerPart[i], 16);
+    integerDecimal += digitValue * Math.pow(16, position);
+    position--;
+  }
+  if (fractionalPart.length > 0) { 
+    position = -1;
+    for (let i = 0; i < fractionalPart.length; i++) {
+      let digitValue = parseInt(fractionalPart[i], 16);
+      fractionalDecimal += digitValue * Math.pow(16, position);
+      position--;
+    }
+  }
+  var arr=new Array();
+  arr.push(integerDecimal + fractionalDecimal);
+  return arr;
+}
+ 
+function decimalToHex(decimal) {
+  let integerPart = Math.floor(decimal);
+  let fractionalPart = decimal - integerPart;
+  let integerHexa = "";
+  let fractionalHexa = "";
+  
+  while (integerPart > 0) {
+    let digitValue = integerPart % 16;
+    if (digitValue >= 10) {
+      integerHexa = String.fromCharCode(65 + digitValue - 10) + integerHexa;
+    } else {
+      integerHexa = digitValue.toString() + integerHexa;
+    }
+    integerPart = Math.floor(integerPart / 16);
+  }
+  if (fractionalPart > 0) {
+    fractionalHexa = ".";
+    let precision = 20;
+    while (precision > 0 && fractionalPart > 0) {
+      fractionalPart *= 16;
+      let digitValue = Math.floor(fractionalPart);
+      if (digitValue >= 10) {
+        fractionalHexa += String.fromCharCode(65 + digitValue - 10);
+      } else {
+        fractionalHexa += digitValue.toString();
+      }
+      fractionalPart -= digitValue;
+      precision--;
+    }
+    if (precision == 0) {
+      fractionalHexa += "A";
+    }
+  }
+  var arr=new Array();
+  arr.push(integerHexa + fractionalHexa);
+  return arr;
+}
+
+
+   
+
 
 function printResult(result_arr, type) {
   var result = "";
@@ -151,7 +216,7 @@ function printResult(result_arr, type) {
   for (var i = 0; i < result_arr.length; i++) {
     result += result_arr[i];
   }
-  if (result.length > 20) {
+  if (result.length > 15) {
     document.getElementById("answer").style.paddingRight = "0rem";
   }
 
@@ -181,6 +246,14 @@ function computer() {
   else if (first_type == 8 && second_type == 10) {
     result_arr = octalToDecimal(number.toString());
     type = "octal";
+  }
+  else if (first_type == 10 && second_type == 16) {
+    result_arr = decimalToHex(number);
+    type = "hexa";
+  }
+  else if (first_type == 16 && second_type == 10) {
+    result_arr = hexToDecimal(number.toString());
+    type = "hexa";
   }
   printResult(result_arr, type);
 }
