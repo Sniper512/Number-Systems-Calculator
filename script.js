@@ -197,9 +197,16 @@ function decimalToHex(decimal) {
   return arr;
 }
 
+function binaryToOctal(binary) {
+  // Convert binary to decimal
+  var decimal = binaryToDecimal(binary)[0];
 
-   
+  // Convert decimal to octal
+  var octal = decimalToOctal(decimal)[0];
 
+  // Return octal
+  return octal;
+}
 
 function printResult(result_arr, type) {
   var result = "";
@@ -254,6 +261,10 @@ function computer() {
   else if (first_type == 16 && second_type == 10) {
     result_arr = hexToDecimal(number.toString());
     type = "hexa";
+  }
+  else if (first_type == 2 && second_type == 8) {
+    result_arr = binaryToOctal(number.toString());
+    type = "octal";
   }
   printResult(result_arr, type);
 }
