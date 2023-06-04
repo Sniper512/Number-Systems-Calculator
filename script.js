@@ -3,9 +3,27 @@ function getter() {
 	var first_type = Number(element.options[element.selectedIndex].value);
 	element = document.getElementById("options2");
 	var second_type = Number(element.options[element.selectedIndex].value);
-	var num = Number(document.getElementById("num_input").value);
+	var numInput = document.getElementById("num_input").value;
+	var num = Number(numInput);
+
+	// Check if the input number is valid according to the first type
+	if (isNaN(num)) {
+		alert("Invalid number input!");
+		return null;
+	}
+
+	if (first_type === 10 && !Number.isInteger(num)) {
+		alert("Invalid number input for decimal!");
+		return null;
+	}
+
+	if (first_type === 2 && num % 10 !== 0 && num % 10 !== 1) {
+		alert("Invalid number input for binary!");
+		return null;
+	}
 	return [first_type, second_type, num];
 }
+
 function pointPartForBinary(num) {
 	var result = "";
 	arr = [];
@@ -227,6 +245,12 @@ function computer() {
 	number = arr[2];
 	var result_arr = [];
 	var type = "";
+
+	if (first_type === second_type) {
+		printResult(number, "direct");
+		return;
+	}
+
 	if (first_type == 10 && second_type == 2) {
 		result_arr = decimalToBinary(number);
 		type = "binary";
@@ -257,11 +281,19 @@ function computer() {
 		var decimal = octalToDecimal(number.toString())[0];
 		result_arr = decimalToBinary(decimal);
 		type = "binary";
-	}
-	else if (first_type == 8 && second_type == 16) {
+	} else if (first_type == 8 && second_type == 16) {
 		var decimal = octalToDecimal(number.toString())[0];
 		result_arr = decimalToHex(decimal);
 		type = "hex";
+	} else if (first_type == 16 && second_type == 2) {
+		var decimal = hexToDecimal(number.toString())[0];
+		result_arr = decimalToBinary(decimal);
+		type = "binary";
+	} else if (first_type == 16 && second_type == 8) {
+		var decimal = hexToDecimal(number.toString())[0];
+		result_arr = decimalToOctal(decimal);
+		type = "octal";
 	}
+
 	printResult(result_arr, type);
 }
