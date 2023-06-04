@@ -63,7 +63,7 @@ function decimalToBinary(num) {
 			integerPart = Math.floor(integerPart / 2);
 		}
 
-		arr.push("."); 
+		arr.push(".");
 
 		var limit = 20;
 		while (fractionalPart > 0 && limit > 0) {
@@ -228,10 +228,10 @@ function printResult(result_arr, type) {
 	}
 
 	if (result.length > 15) {
-		document.getElementById("answer").style.paddingRight = "0rem";
+		document.getElementById("ans").style.paddingRight = "0rem";
 	}
 
-	document.getElementById("answer").innerHTML = result;
+	document.getElementById("ans").innerHTML = result;
 }
 
 function computer() {
@@ -249,9 +249,11 @@ function computer() {
 		printResult(number, "direct");
 		return;
 	}
-
+    console.log("first");
 	if (first_type == 10 && second_type == 2) {
+		console.log("second");
 		result_arr = decimalToBinary(number);
+		console.log(result_arr);
 		type = "binary";
 	} else if (first_type == 2 && second_type == 10) {
 		result_arr = binaryToDecimal(number.toString());

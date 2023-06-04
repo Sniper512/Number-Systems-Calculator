@@ -113,9 +113,9 @@ body {
 	flex-grow: 1;
 	background-color: #f3f7f7;
 	border: 0px solid lightgrey;
-	font-size: large;
+	font-size: x-large;
+	font-weight: bolder;
 	color: black;
-	font-weight: normal;
 	outline: none;
 	border-radius: 15px;
 	width: 100%;
