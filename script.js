@@ -193,7 +193,7 @@ function decimalToHex(decimal) {
 
 function printResult(result_arr, type) {
 	var result = "";
-
+	document.getElementById("bulb").src = "pic_bulbon.gif";
 	if (Array.isArray(result_arr)) {
 		result = result_arr.join("");
 	} else {
@@ -253,7 +253,15 @@ function computer() {
 		var decimal = binaryToDecimal(number.toString())[0];
 		result_arr = decimalToHex(decimal);
 		type = "hex";
+	} else if (first_type == 8 && second_type == 2) {
+		var decimal = octalToDecimal(number.toString())[0];
+		result_arr = decimalToBinary(decimal);
+		type = "binary";
 	}
-
+	else if (first_type == 8 && second_type == 16) {
+		var decimal = octalToDecimal(number.toString())[0];
+		result_arr = decimalToHex(decimal);
+		type = "hex";
+	}
 	printResult(result_arr, type);
 }

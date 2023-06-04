@@ -49,6 +49,11 @@ img{
     display:flex;
     flex-direction: column;
 }
+#bulb{
+    width:4%;
+    height:20%;
+    border-radius: 15px;
+}
 .Main-Heading{
     margin-left: 15rem;
     font-family: Arial, Helvetica, sans-serif;
