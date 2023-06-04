@@ -6,7 +6,6 @@ function getter() {
 	var numInput = document.getElementById("num_input").value;
 	var num = Number(numInput);
 
-	// Check if the input number is valid according to the first type
 	if (isNaN(num)) {
 		alert("Invalid number input!");
 		return null;
@@ -64,9 +63,9 @@ function decimalToBinary(num) {
 			integerPart = Math.floor(integerPart / 2);
 		}
 
-		arr.push("."); // Add the decimal point
+		arr.push("."); 
 
-		var limit = 20; // Limit the number of fractional digits
+		var limit = 20;
 		while (fractionalPart > 0 && limit > 0) {
 			fractionalPart *= 2;
 			arr.push(Math.floor(fractionalPart));
