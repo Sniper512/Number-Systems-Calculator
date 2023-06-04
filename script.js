@@ -193,18 +193,21 @@ function decimalToHex(decimal) {
 
 function printResult(result_arr, type) {
 	var result = "";
+
+	if (Array.isArray(result_arr)) {
+		result = result_arr.join("");
+	} else {
+		result = result_arr;
+	}
+
 	if (type === "binary") {
-		var size = result_arr.length;
+		var size = result.length;
 		if (size < 4) {
 			while (size < 4) {
-				result += "0";
+				result = "0" + result;
 				size++;
 			}
 		}
-	}
-
-	for (var i = 0; i < result_arr.length; i++) {
-		result += result_arr[i];
 	}
 
 	if (result.length > 15) {
@@ -242,6 +245,15 @@ function computer() {
 	} else if (first_type == 16 && second_type == 10) {
 		result_arr = hexToDecimal(number.toString());
 		type = "hexa";
+	} else if (first_type == 2 && second_type == 8) {
+		var decimal = binaryToDecimal(number.toString())[0];
+		result_arr = decimalToOctal(decimal);
+		type = "octal";
+	} else if (first_type == 2 && second_type == 16) {
+		var decimal = binaryToDecimal(number.toString())[0];
+		result_arr = decimalToHex(decimal);
+		type = "hex";
 	}
+
 	printResult(result_arr, type);
 }
