@@ -7,15 +7,14 @@
     <link rel="stylesheet" href="./styles.css">
     <link rel="icon" href="computer.jpg" width="200px" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="script.js"></script>
 </head>
 
 <body>
 
     <section class="container">
-        <div>
+        <div class="heading-div">
             <span class="Main-Heading">NumGeeks</span>
-            <span><img id="bulb" src="pic_bulboff.gif" alt="No"></span>
+            <img id="bulb" src="pic_bulboff.gif" alt="No">
         </div>
         <div class="sub-Heading">
             <span>Calculator for all Number Systems</span>
@@ -36,11 +35,11 @@
                     <option value=16>HexaDecimal</option>
                 </select>
             </div>
-            <div class="input-num">
+            <div class="input_answer_divs input-num">
                 <i class="fa fa-calculator fa-shake" style="font-size:25px;color:black;"></i>
-                <input type="number" class="number-one" name="mail" id="num_input" placeholder="Number to convert..">
+                <input type="number" class="input_answer_display" name="mail" id="num_input" placeholder="Number to convert..">
             </div>
-
+            
             <div class="Convert-too">
                 <i class="fa fa-bars" style="font-size:25px;color:black;"></i>
                 <select name="too-menu" id="options2">
@@ -51,15 +50,14 @@
                     <option value=16>Base-16</option>
                 </select>
             </div>
-            <div class="Num-answer">
+            <div class="input_answer_divs Num-answer">
                 <i class="fa fa-calculator fa-shake" style="font-size:25px;color:black;"></i>
-                <div id="answer">...</div>
+                <input type="number" disabled class="input_answer_display" placeholder="...">
             </div>
 
         </form>
         <div class="converter-div">
-            <span class="converter-sub-div"></span>
-            <button class="converter-sub-div" id="convert" onclick=computer()>Convert</button>
+            <button id="convert" onclick=computer()>Convert</button>
         </div>
         <div class="ConnectTagDiv">
             <span class="spaceProvider DecreaseWidth">
@@ -79,7 +77,7 @@
     </section>
     <div class="privacy">
         By Signing up, You agree to our <a href="#">Terms of service</a> and <a href="#">Privacy Policy</a>
-        <div>
+    <div>
 </body>
 
 </html>

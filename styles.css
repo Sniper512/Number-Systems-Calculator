@@ -6,15 +6,23 @@ body {
 
 .container {
 	margin: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+}
+
+.heading-div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
 }
 
 .Main-Heading {
 	font-family: Arial, Helvetica, sans-serif;
 	font-weight: bolder;
-	font-size: 3rem;
+	font-size: 3.5rem;
 	color: green;
 }
 
@@ -52,6 +60,12 @@ body {
 	padding: 1rem;
 }
 
+#options,
+#options2 {
+	font-weight: bold;
+	padding: 0.2%;
+}
+
 .Convert-from i,
 .Convert-too i {
 	font-size: 25px;
@@ -74,18 +88,20 @@ body {
 	margin-right: 2rem;
 }
 
-.input-num,
-.Num-answer {
+.input_answer_divs {
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	background-color: #f3f7f7;
 	margin-bottom: 2rem;
 	border-radius: 15px;
-	padding: 5px;
+	padding: 1rem;
 }
-#bulb{
-    width:10%;
+
+#bulb {
+	width: 10%;
 }
+
 .input-num i,
 .Num-answer i {
 	font-size: 25px;
@@ -93,17 +109,16 @@ body {
 	margin-right: 1rem;
 }
 
-.number-one,
-#answer {
+.input_answer_display {
 	flex-grow: 1;
 	background-color: #f3f7f7;
 	border: 0px solid lightgrey;
 	font-size: large;
 	color: black;
 	font-weight: normal;
-	padding: 1rem;
 	outline: none;
 	border-radius: 15px;
+	width: 100%;
 	margin-left: 1rem;
 	margin-right: 2rem;
 }
@@ -114,22 +129,19 @@ body {
 	gap: 1rem;
 }
 
-.converter-sub-div {
+#convert {
 	padding: 1rem;
 	text-align: center;
-	border-color: white;
-}
-
-#convert {
 	background-color: #1ba94c;
+	border: none;
 	font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 	font-size: 1.2rem;
 	color: #fff;
 	font-weight: bold;
 	cursor: pointer;
-	padding: 0.5rem 2rem;
-	margin-right: 2.3rem;
 	border-radius: 5px;
+	margin: auto;
+	width: 100%;
 }
 
 .ConnectTagDiv {
@@ -158,11 +170,12 @@ hr {
 	flex-direction: row;
 	justify-content: center;
 	gap: 2rem;
-	margin-top: 1.5rem;
+	margin: 1.5rem auto 0;
+	width: fit-content;
 }
 
 .logos img {
-	width: 100px;
+	width: 100%;
 }
 
 .privacy {
@@ -174,7 +187,7 @@ hr {
 
 .logo {
 	text-decoration: none;
-	color: white;
+	width: 100%;
 }
 
 .logo:hover {
@@ -187,7 +200,7 @@ hr {
 	}
 
 	.Main-Heading {
-		font-size: 2rem;
+		font-size: 3rem;
 	}
 
 	.sub-Heading {
@@ -199,9 +212,7 @@ hr {
 	}
 
 	.Convert-from select,
-	.Convert-too select,
-	.number-one,
-	#answer {
+	.Convert-too select {
 		font-size: 1rem;
 	}
 
@@ -220,7 +231,7 @@ hr {
 	}
 
 	.Main-Heading {
-		font-size: 1.5rem;
+		font-size: 2rem;
 	}
 
 	.sub-Heading {
@@ -240,6 +251,10 @@ hr {
 
 	.converter-sub-div {
 		font-size: 0.8rem;
+	}
+
+	.logos {
+		gap: 1rem;
 	}
 
 	.logos img {
